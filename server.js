@@ -42,3 +42,4 @@ nodeCron.schedule("0 0 0 5 * *", async () => {
     console.log(error);
   }
 });
+
