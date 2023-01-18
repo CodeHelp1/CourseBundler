@@ -18,6 +18,27 @@ export const instance = new RazorPay({
   key_secret: process.env.RAZORPAY_API_SECRET,
 });
 
+nodeCron.schedule("0 0 0 5 * *", async () => {
+  try {
+    await Stats.create({});
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`Server is working on port: ${process.env.PORT}`);
+});
+nodeCron.schedule("0 0 0 5 * *", async () => {
+  try {
+    await Stats.create({});
+  } catch (error) {
+    console.log(error);
+  }
+});nodeCron.schedule("0 0 0 5 * *", async () => {
+  try {
+    await Stats.create({});
+  } catch (error) {
+    console.log(error);
+  }
 });
