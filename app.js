@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 
 config({
-    path: "./config/config.env",
+  path: "./config/config.env",
 });
 export const app = express();
 
