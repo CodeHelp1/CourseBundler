@@ -17,6 +17,11 @@ export const instance = new RazorPay({
   key_secret: process.env.RAZORPAY_API_SECRET,
 });
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST');
+header("Access-Control-Allow-Headers: X-Requested-With");
+
+
 nodeCron.schedule("0 0 0 5 * *", async () => {
   try {
     await Stats.create({});
