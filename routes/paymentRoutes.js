@@ -22,4 +22,3 @@ router.route("/razorpaykey").get(getRazorPayKey);
 router.route("/subscribe/cancel").delete(isAuthenticated, cancelSubscription);
 
 export default router;
-

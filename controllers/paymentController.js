@@ -1,11 +1,11 @@
-import { catchAsycError } from "../middlewares/catchAsyncError.js";
+import { catchAsyncError } from "../middlewares/catchAsyncError.js";
 import { User } from "../models/User.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import { instance } from "../server.js";
 import crypto from "crypto";
 import { Payment } from "../models/Payment.js";
 
-export const buySubscription = catchAsycError(async (req, res, next) => {
+export const buySubscription = catchAsyncError(async (req, res, next) => {
   const user = await User.findById(req.user._id);
 
   if (user.role === "admin")
@@ -31,7 +31,7 @@ export const buySubscription = catchAsycError(async (req, res, next) => {
   });
 });
 
-export const paymentVerification = catchAsycError(async (req, res, next) => {
+export const paymentVerification = catchAsyncError(async (req, res, next) => {
   const { razorpay_signature, razorpay_payment_id, razorpay_subscription_id } =
     req.body;
 
@@ -65,14 +65,14 @@ export const paymentVerification = catchAsycError(async (req, res, next) => {
   );
 });
 
-export const getRazorPayKey = catchAsycError(async (req, res, next) => {
+export const getRazorPayKey = catchAsyncError(async (req, res, next) => {
   res.status(200).json({
     success: true,
     key: process.env.RAZORPAY_API_KEY,
   });
 });
 
-export const cancelSubscription = catchAsycError(async (req, res, next) => {
+export const cancelSubscription = catchAsyncError(async (req, res, next) => {
   const user = await User.findById(req.user._id);
 
   const subscriptionId = user.subscription.id;
